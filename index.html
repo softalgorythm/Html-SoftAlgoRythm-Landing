@@ -3,67 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SoftAlgoRythm | Software Moderno</title>
-  <meta name="description" content="SoftAlgoRythm - Desarrollo de software moderno, aplicaciones web, APIs y soluciones cloud." />
+  <title>SoftAlgoRythm | Ingeniería de Software</title>
   
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            brand: {
-              green: '#1BEF7C',
-              cyan: '#19ADBD',
-              blue: '#1771F9',
-            },
+            brand: { green: '#1BEF7C', cyan: '#19ADBD', blue: '#1771F9' },
             dark: '#020617',
           },
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-          },
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
         }
       }
     }
   </script>
-  <link rel="icon" href="favicon.ico">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    .glass-card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); }
+    /* Clase de seguridad por si falla JS */
+    .animate-on-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.5s ease; }
+  </style>
 </head>
 
-<body class="bg-dark text-white font-sans selection:bg-brand-cyan/30 selection:text-brand-green">
+<body class="bg-dark text-white font-sans selection:bg-brand-green selection:text-black">
 
   <header class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-dark/70 backdrop-blur-xl">
     <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-      <div class="flex items-center gap-2 group cursor-pointer">
+      <div class="flex items-center gap-2">
         <div class="w-8 h-8 bg-gradient-to-tr from-brand-blue via-brand-cyan to-brand-green rounded-lg rotate-3 group-hover:rotate-12 transition-transform">
             <img src="favicon.ico" alt="Logo" class="w-full h-full object-cover rounded-lg">
         </div>
-        <h1 class="text-2xl font-black tracking-tighter">
-          Soft<span class="text-brand-cyan">AlgoRythm</span>
-        </h1>
+        <h1 class="text-2xl font-black tracking-tighter">Soft<span class="text-brand-cyan">AlgoRythm</span></h1>
       </div>
-
       <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
-        <a href="#services" class="hover:text-brand-green transition-colors">Servicios</a>
-        <a href="#technologies" class="hover:text-brand-cyan transition-colors">Tecnologías</a>
-        <a href="#approach" class="hover:text-brand-blue transition-colors">Enfoque</a>
-        <a href="#contact" class="px-5 py-2 rounded-full border border-brand-cyan/20 bg-brand-cyan/5 text-brand-cyan hover:bg-brand-cyan hover:text-white transition-all">
-          Empezar un proyecto
-        </a>
+        <a href="#services" class="hover:text-brand-green transition">Servicios</a>
+        <a href="#process" class="hover:text-brand-cyan transition">Proceso</a>
+        <a href="#contact" class="px-5 py-2 rounded-full border border-brand-cyan/20 bg-brand-cyan/5 text-brand-cyan hover:bg-brand-cyan hover:text-white transition-all">Contacto</a>
       </nav>
     </div>
   </header>
 
   <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
     <div class="absolute top-0 left-1/4 w-96 h-96 bg-brand-blue/20 rounded-full blur-[120px] -z-10"></div>
-    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-green/10 rounded-full blur-[120px] -z-10"></div>
-    
-    <div class="absolute inset-0 [background-image:linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] [background-size:40px_40px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)] -z-10"></div>
-
-    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-      <div class="space-y-8">
+    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center w-full">
+      <div class="hero-content">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-brand-green/20 bg-brand-green/10 text-brand-green text-xs font-bold uppercase tracking-wider">
           <span class="relative flex h-2 w-2">
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-green opacity-75"></span>
@@ -71,59 +59,42 @@
           </span>
           Sistemas de alto rendimiento
         </div>
-
-        <h2 class="text-6xl md:text-8xl font-black leading-[0.9] tracking-tighter">
-          Ideamos <br/>
-          <span class="bg-gradient-to-r from-brand-green via-brand-cyan to-brand-blue text-transparent bg-clip-text">
-            Software
-          </span> <br/>
-          Superior.
+        <h2 class="text-6xl md:text-8xl font-black leading-[0.9] tracking-tighter mb-6">
+          Ideamos <br/> <span class="bg-gradient-to-r from-brand-green via-brand-cyan to-brand-blue text-transparent bg-clip-text">Software</span> <br/> Superior.
         </h2>
-
-        <p class="text-slate-400 text-lg md:text-xl leading-relaxed max-w-xl">
-          En SoftAlgoRythm transformamos algoritmos complejos en experiencias de usuario intuitivas y arquitecturas en la nube ultra-escalables.
-        </p>
-
-        <div class="flex flex-wrap gap-4">
-          <a href="#contact" class="px-8 py-4 rounded-xl bg-brand-blue text-white font-bold hover:scale-105 transition-all shadow-lg shadow-brand-blue/25">
-            Hablemos de tu idea
-          </a>
-          <a href="#services" class="px-8 py-4 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm font-bold hover:bg-white/10 transition-all">
-            Nuestros Servicios
-          </a>
-        </div>
+        <p class="text-slate-400 text-lg max-w-xl mb-8">En SoftAlgoRythm transformamos algoritmos complejos en experiencias de usuario intuitivas y arquitecturas en la nube ultra-escalables.</p>
+        <a href="#contact" class="inline-block px-8 py-4 rounded-xl bg-brand-blue text-white font-bold shadow-lg shadow-brand-blue/25 hover:scale-105 transition-transform">Hablemos ahora</a>
       </div>
-
-      <div class="relative group">
-        <div class="absolute -inset-1 bg-gradient-to-r from-brand-green to-brand-blue rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-        <div class="relative bg-slate-900/80 border border-white/10 backdrop-blur-2xl rounded-2xl p-6 shadow-2xl">
-          <div class="flex gap-2 mb-6 border-b border-white/5 pb-4">
-            <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
-            <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-            <div class="w-3 h-3 rounded-full bg-brand-green/50"></div>
-          </div>
-          <code class="text-sm md:text-base font-mono leading-relaxed block">
-            <p class="text-brand-cyan italic">// SoftAlgoRythm Core</p>
-            <p class="text-white"><span class="text-brand-green">import</span> { Scalability } <span class="text-brand-green">from</span> <span class="text-brand-cyan">'our-dna'</span>;</p>
-            <br>
-            <p class="text-brand-blue">const <span class="text-white">Project</span> = (idea) => {</p>
-            <p class="pl-4 text-slate-300">return idea</p>
-            <p class="pl-8 text-slate-400">.optimize({ speed: <span class="text-brand-green">'max'</span> })</p>
-            <p class="pl-8 text-slate-400">.secure({ level: <span class="text-brand-cyan">'enterprise'</span> })</p>
-            <p class="pl-8 text-slate-400">.deploy(<span class="text-brand-blue">'AWS'</span>);</p>
-            <p class="text-brand-blue">};</p>
-          </code>
-        </div>
+      <div class="hero-image relative">
+            <div class="absolute -inset-1 bg-gradient-to-r from-brand-green to-brand-blue rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+            <div class="relative bg-slate-900/80 border border-white/10 backdrop-blur-2xl rounded-2xl p-6 shadow-2xl">
+            <div class="flex gap-2 mb-6 border-b border-white/5 pb-4">
+                <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                <div class="w-3 h-3 rounded-full bg-brand-green/50"></div>
+            </div>
+            <code class="text-sm md:text-base font-mono leading-relaxed block">
+                <p class="text-brand-cyan italic">// SoftAlgoRythm Core</p>
+                <p class="text-white"><span class="text-brand-green">import</span> { Scalability } <span class="text-brand-green">from</span> <span class="text-brand-cyan">'our-dna'</span>;</p>
+                <br>
+                <p class="text-brand-blue">const <span class="text-white">Project</span> = (idea) => {</p>
+                <p class="pl-4 text-slate-300">return idea</p>
+                <p class="pl-8 text-slate-400">.optimize({ speed: <span class="text-brand-green">'max'</span> })</p>
+                <p class="pl-8 text-slate-400">.secure({ level: <span class="text-brand-cyan">'enterprise'</span> })</p>
+                <p class="pl-8 text-slate-400">.deploy(<span class="text-brand-blue">'AWS'</span>);</p>
+                <p class="text-brand-blue">};</p>
+            </code>
+            </div>
       </div>
     </div>
   </section>
 
-  <section id="services" class="py-32 relative">
+  <section id="services" class="py-10 relative">
     <div class="max-w-7xl mx-auto px-6">
       <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-6">
         <div class="max-w-2xl">
           <h3 class="text-brand-green font-bold tracking-widest uppercase text-sm mb-4">Lo que hacemos</h3>
-          <p class="text-4xl md:text-6xl font-black">Soluciones sin límites.</p>
+          <p class="text-4xl md:text-5xl font-black">Soluciones sin límites.</p>
         </div>
         <p class="text-slate-400 max-w-xs italic border-l border-brand-cyan pl-4">
           Diseñamos tecnología que no solo funciona, sino que impulsa el crecimiento real.
@@ -131,56 +102,52 @@
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="p-8 rounded-3xl bg-white/5 border border-white/5 hover:border-brand-green/30 hover:bg-white/10 transition-all group">
-          <div class="w-12 h-12 rounded-xl bg-brand-green/10 text-brand-green flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-            💻
-          </div>
+        <div class="service-card animate-on-scroll p-8 rounded-3xl glass-card group">
+          <div class="w-12 h-12 rounded-xl bg-brand-green/10 text-brand-green flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">💻</div>
           <h4 class="text-xl font-bold mb-3">Web Apps</h4>
-          <p class="text-slate-400 text-sm leading-relaxed">Experiencias interactivas con React y Next.js diseñadas para convertir.</p>
+          <p class="text-slate-400 text-sm">Interfaces modernas con React y Next.js.</p>
         </div>
-        <div class="p-8 rounded-3xl bg-white/5 border border-white/5 hover:border-brand-blue/30 hover:bg-white/10 transition-all group">
-          <div class="w-12 h-12 rounded-xl bg-brand-blue/10 text-brand-blue flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-            ☁️
-          </div>
+        <div class="service-card animate-on-scroll p-8 rounded-3xl glass-card group">
+          <div class="w-12 h-12 rounded-xl bg-brand-blue/10 text-brand-blue flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">☁️</div>
           <h4 class="text-xl font-bold mb-3">Cloud Architect</h4>
-          <p class="text-slate-400 text-sm leading-relaxed">Infraestructura AWS robusta, serverless y optimización de costos.</p>
+          <p class="text-slate-400 text-sm">Infraestructura AWS robusta y escalable.</p>
         </div>
-        <div class="p-8 rounded-3xl bg-white/5 border border-white/5 hover:border-brand-cyan/30 hover:bg-white/10 transition-all group">
-          <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 text-brand-cyan flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-            🔌
-          </div>
+        <div class="service-card animate-on-scroll p-8 rounded-3xl glass-card group">
+          <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 text-brand-cyan flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">🔌</div>
           <h4 class="text-xl font-bold mb-3">APIs & Backend</h4>
-          <p class="text-slate-400 text-sm leading-relaxed">Sistemas escalables en Node.js y .NET con seguridad de grado bancario.</p>
+          <p class="text-slate-400 text-sm">Sistemas seguros en Node.js y .NET.</p>
         </div>
-        <div class="p-8 rounded-3xl bg-white/5 border border-white/5 hover:border-brand-green/30 hover:bg-white/10 transition-all group">
-          <div class="w-12 h-12 rounded-xl bg-brand-green/10 text-brand-green flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-            🚀
-          </div>
+        <div class="service-card animate-on-scroll p-8 rounded-3xl glass-card group">
+          <div class="w-12 h-12 rounded-xl bg-brand-green/10 text-brand-green flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">🚀</div>
           <h4 class="text-xl font-bold mb-3">DevOps</h4>
-          <p class="text-slate-400 text-sm leading-relaxed">Automatización CI/CD para que tu código llegue a producción en segundos.</p>
+          <p class="text-slate-400 text-sm">Automatización total de despliegues.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="technologies" class="py-20 bg-white/[0.02] border-y border-white/5 overflow-hidden">
-    <div class="max-w-7xl mx-auto px-6 mb-12 text-center">
-      <h4 class="text-slate-500 font-bold text-xs uppercase tracking-[0.3em]">Stack Tecnológico de Vanguardia</h4>
-    </div>
-    <div class="flex flex-wrap justify-center gap-4 px-6 opacity-60 hover:opacity-100 transition-opacity">
-      <span class="px-6 py-2 rounded-full border border-white/10 bg-dark text-sm font-medium">React</span>
-      <span class="px-6 py-2 rounded-full border border-brand-cyan/50 bg-brand-cyan/10 text-brand-cyan text-sm font-medium">Next.js</span>
-      <span class="px-6 py-2 rounded-full border border-white/10 bg-dark text-sm font-medium">Node.js</span>
-      <span class="px-6 py-2 rounded-full border border-brand-blue/50 bg-brand-blue/10 text-brand-blue text-sm font-medium">AWS</span>
-      <span class="px-6 py-2 rounded-full border border-white/10 bg-dark text-sm font-medium">.NET</span>
-      <span class="px-6 py-2 rounded-full border border-brand-green/50 bg-brand-green/10 text-brand-green text-sm font-medium">TypeScript</span>
-      <span class="px-6 py-2 rounded-full border border-white/10 bg-dark text-sm font-medium">Tailwind CSS</span>
-      <span class="px-6 py-2 rounded-full border border-white/10 bg-dark text-sm font-medium">SQL Server</span>
+  <section id="process" class="py-10 bg-white/[0.01]">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12">
+      <div class="animate-on-scroll">
+        <h4 class="text-brand-green font-black text-5xl mb-4 opacity-20">01</h4>
+        <h5 class="text-xl font-bold mb-2">Análisis</h5>
+        <p class="text-slate-400 text-sm">Entendemos tu modelo de negocio a fondo.</p>
+      </div>
+      <div class="animate-on-scroll">
+        <h4 class="text-brand-cyan font-black text-5xl mb-4 opacity-20">02</h4>
+        <h5 class="text-xl font-bold mb-2">Desarrollo</h5>
+        <p class="text-slate-400 text-sm">Código limpio y sprints de entrega constante.</p>
+      </div>
+      <div class="animate-on-scroll">
+        <h4 class="text-brand-blue font-black text-5xl mb-4 opacity-20">03</h4>
+        <h5 class="text-xl font-bold mb-2">Despliegue</h5>
+        <p class="text-slate-400 text-sm">Lanzamiento optimizado para el mercado real.</p>
+      </div>
     </div>
   </section>
 
-  <section id="approach" class="py-32">
-    <div class="max-w-7xl mx-auto px-6">
+  <section id="approach" class="py-10">
+    <div class="animate-on-scroll max-w-7xl mx-auto px-6">
       <div class="grid lg:grid-cols-3 gap-12">
         <div class="lg:col-span-1">
           <h3 class="text-4xl font-black mb-6">Nuestro enfoque <span class="text-brand-blue">Estratégico</span></h3>
@@ -190,12 +157,12 @@
         </div>
         <div class="lg:col-span-2 grid sm:grid-cols-2 gap-8">
           <div class="space-y-4">
-            <div class="text-5xl font-black text-white/10 italic">01</div>
+            <div class="text-5xl font-black text-white/10 italic"></div>
             <h4 class="text-xl font-bold text-brand-green">Arquitectura Limpia</h4>
             <p class="text-slate-400 text-sm leading-relaxed">Código modular y fácil de mantener que permite que tu aplicación crezca sin deudas técnicas.</p>
           </div>
           <div class="space-y-4">
-            <div class="text-5xl font-black text-white/10 italic">02</div>
+            <div class="text-5xl font-black text-white/10 italic"></div>
             <h4 class="text-xl font-bold text-brand-cyan">Escalabilidad Real</h4>
             <p class="text-slate-400 text-sm leading-relaxed">Sistemas preparados para pasar de 10 a 10 millones de usuarios sin despeinarse.</p>
           </div>
@@ -244,5 +211,30 @@
     </div>
   </footer>
 
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Esperamos a que todo cargue
+    window.onload = () => {
+      // Animación Hero
+      gsap.from(".hero-content", { opacity: 0, x: -50, duration: 1 });
+      gsap.from(".hero-image", { opacity: 0, x: 50, duration: 1, delay: 0.2 });
+
+      // Animación de los elementos con la clase .animate-on-scroll
+      gsap.utils.toArray(".animate-on-scroll").forEach(item => {
+        gsap.to(item, {
+          scrollTrigger: {
+            trigger: item,
+            start: "top 90%", // Empieza cuando el item está casi en pantalla
+            toggleActions: "play none none none"
+          },
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out"
+        });
+      });
+    };
+  </script>
 </body>
 </html>
